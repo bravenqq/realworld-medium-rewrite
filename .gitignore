@@ -23,4 +23,6 @@ _testmain.go
 *.exe
 *.test
 *.prof
+govdev.sh
+govpro.sh
 
