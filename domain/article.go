@@ -3,7 +3,25 @@ package domain
 
 import "errors"
 
-//PublicStatus 文章发布状态
+/*
+	module Article
+
+at the view of author
+
+write(Article)Article -> review(Article)Article -> publish(Article)Article
+                -> drop(Article)
+
+at the view of reader
+
+find -> view
+
+edit published author
+
+reedit(Draft)Draft -> replish(Draft)Draft
+
+*/
+
+// PublicStatus 文章发布状态
 type PublicStatus int8
 
 const (
@@ -23,10 +41,10 @@ var (
 // 如果不是domain直接相关的通常是放到common或者base中去) <10-12-20, bantana> //
 
 // NUUID is a Number UUID
-//NUUID 数字类型UUID
+// NUUID 数字类型UUID
 type NUUID int64
 
-//Article 文章实体
+// Article 文章实体
 type Article struct {
 	ID       NUUID
 	Title    string
@@ -46,7 +64,7 @@ func (art Article) Check() error {
 	return nil
 }
 
-//ArticleRepository article repository
+// ArticleRepository article repository
 type ArticleRepository interface {
 	Create(a Article) error
 	Save(a Article) error
